@@ -10,13 +10,9 @@ if option==1:
 elif option==2:
     print("Masukkan data diri anda")
     nama = str(input("Masukkan nama anda: "))
-    #print("Nama: ",nama)
     no_ktp = int(input("Masukkan nomor KTP anda: "))
-    #print("No KTP:", no_ktp)
     no_hp = str(input("Masukkan nomor telepon anda: "))
-    #print("No Telepon: ", no_hp)
     alamat = str(input("Masukkan alamat lengkap anda: "))
-    #print("Alamat: ", alamat)
     print("Nama: ", nama)
     print("No KTP:", no_ktp)
     print("No Telepon: ", no_hp)
