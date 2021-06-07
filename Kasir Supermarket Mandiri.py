@@ -56,7 +56,7 @@ elif option == 3 :
 
 else :
     print("Pilihan yang ada inputkan salah.")
-    option = int(input("\nMasukkan pilihan anda (1/2/3) : "))
+    option = int(input("\nMasukkan pilihan anda (1/2/3) : ")
 
 
 
