@@ -50,7 +50,7 @@ Login member jika pengguna sudah memiliki kode membership. Buat member jika peng
 dengan memasukkan data diri. Transaksi tanpa member apabila pengguna tidak memiliki dan tidak ingin membuat 
 membership.
 
-Pengguna memasukkan produk yang akan dibeli beserta jumlahnya 
+Pengguna memasukkan produk yang akan dibeli beserta jumlahnya. 
 
 Program akan menampilkan keseluruhan produk, jumlah produk yang dibeli, dan total harga yang harus dibayarkan.
 
