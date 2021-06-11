@@ -40,13 +40,6 @@ def main():
     scan_product()
     c1 = CheckoutRegister(current_date_time, wishlist)
     total_payment = c1.calculate_payment_due()
-    #if option == 1 or 2 :
-        #total_diskon = total_payment * 0.9
-        #print("Total :", total_diskon)
-    #else :
-        #total = total_payment
-        #print("Total :", total)
-
     change = c1.pay_money(total_payment)
     # print("Change:",change)
     c1.print_receipt(change)
@@ -59,9 +52,8 @@ def main():
     else:
         sys.exit(0)
         exit()
-#def total_payment() :
-    #if option == 1 or option == 2 :
 
+        
 
 print("\n======== Selamat Datang di Kasir Supermarket Mandiri ========\n")
 print("1. Login member")
