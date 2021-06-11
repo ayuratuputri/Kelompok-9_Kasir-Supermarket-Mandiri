@@ -23,12 +23,12 @@ Berkas "Kasir Supermarket Mandiri.py"
 Berkas "datamembership.csv"
 
     merupakan berkas pendukung program yaitu berkas database untuk data membership pada program
-Berkas "buah.csv"
+Berkas "produk.py"
 
-    merupakan berkas pendukung program yaitu berkas database untuk produk yang dibeli berupa buah-buahan
-Berkas "Sayur.csv"
+    merupakan berkas pendukung program yaitu berkas program yang berkaitan dengan produk yang dijual di supermarket
+Berkas "checkout.py"
 
-    merupakan berkas pendukung program yaitu berkas database untuk produk yang dibeli berupa sayuran
+    merupakan berkas pendukung program yaitu berkas program yang berkaitan dengan proses input produk, perhitungan total biaya, hingga struk belanja
 Berkas "README.md"
 
     merupakan penjelasan singkat isi dari repository
@@ -39,7 +39,7 @@ Spesifikasi OS : Windows 7 atau lebih, MacOS, Linux
 
 Python version : 3.7.X atau lebih
 
-Library : .csv
+Library : .csv, .py
 
 ### Penjelasan Singkat Program
 
