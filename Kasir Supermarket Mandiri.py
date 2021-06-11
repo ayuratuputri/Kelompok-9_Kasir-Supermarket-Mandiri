@@ -1,19 +1,69 @@
+from produk import Product
+from checkout import CheckoutRegister
+from time import gmtime, strftime
 import csv
+# import sys
+import os
+import sys
+
+current_date_time = strftime("%Y-%m-%d %H:%M:%S", gmtime())
+wishlist = []
 
 datamember = []
-
 with open('datamembership.csv') as csv_file:
     csv_reader = csv.DictReader(csv_file)
     for row in csv_reader:
         datamember.append(row)
 # print(datamember)
-
 list_kode = []
 for data in datamember :
     list_kode.append(list(data.values())[0])
 # print(kodemember)
 
-print("======== Selamat Datang di Kasir Supermarket Mandiri ========")
+def scan_product():
+    barcode = input("\nMasukkan kode produk: ")
+    p1 = Product("", "", barcode)
+    search_product = p1.check_product_on_inventory()
+    if (search_product == False):
+        print("Kode yang anda masukkan salah.\n")
+        scan_another()
+    else:
+        wishlist.append(search_product)
+        scan_another()
+
+def scan_another():
+    scan_another = input("Menambahkan produk? (Y/N)")
+    if (scan_another == 'y' or scan_another == 'Y'):
+        scan_product()
+
+def main():
+    scan_product()
+    c1 = CheckoutRegister(current_date_time, wishlist)
+    total_payment = c1.calculate_payment_due()
+    #if option == 1 or 2 :
+        #total_diskon = total_payment * 0.9
+        #print("Total :", total_diskon)
+    #else :
+        #total = total_payment
+        #print("Total :", total)
+
+    change = c1.pay_money(total_payment)
+    # print("Change:",change)
+    c1.print_receipt(change)
+    print("\nTerima kasih telah berbelanja!")
+
+    next = input("Keluar dari program? (Y/N)")
+    if (next == "n" or next == "N"):
+        wishlist[:] = []
+        main()
+    else:
+        sys.exit(0)
+        exit()
+#def total_payment() :
+    #if option == 1 or option == 2 :
+
+
+print("\n======== Selamat Datang di Kasir Supermarket Mandiri ========\n")
 print("1. Login member")
 print("2. Buat member")
 print("3. Transaksi tanpa member")
@@ -21,12 +71,13 @@ print("3. Transaksi tanpa member")
 option = int(input("\nMasukkan pilihan anda (1/2/3) : "))
 
 if option == 1 :
-    kode_member = input("Masukkan kode member anda: ")
-    if kode_member in list_kode :
-        print("Anda merupakan member supermarket dengan kode", kode_member)
-    else :
-        print("Kode yang anda masukkan salah")
-        # kode_member = input("Masukkan kode member anda: ")
+    while True :
+        kode_member = input("Masukkan kode member anda: ")
+        if kode_member in list_kode :
+            print("Anda merupakan member supermarket dengan kode", kode_member)
+            break
+        else :
+            print("Kode yang anda masukkan salah")
 
 elif option == 2 :
     print("Masukkan data diri anda")
@@ -56,12 +107,8 @@ elif option == 3 :
 
 else :
     print("Pilihan yang ada inputkan salah.")
-    option = int(input("\nMasukkan pilihan anda (1/2/3) : "))
-    
 
+print("\nPENGINPUTAN PRODUK")
 
-
-
-
-
+main()
 
