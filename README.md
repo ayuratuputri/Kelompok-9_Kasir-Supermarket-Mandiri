@@ -28,7 +28,12 @@ Berkas "produk.py"
     merupakan berkas pendukung program yaitu berkas program yang berkaitan dengan produk yang dijual di supermarket
 Berkas "checkout.py"
 
-    merupakan berkas pendukung program yaitu berkas program yang berkaitan dengan proses input produk, perhitungan total biaya, hingga struk belanja
+    merupakan berkas pendukung program yaitu berkas program yang berkaitan dengan proses input produk, perhitungan total biaya, hingga struk belanja 
+    (untuk perhitungan diskon)
+Berkas "checkout2.py"
+
+    merupakan berkas pendukung program yaitu berkas program yang berkaitan dengan proses input produk, perhitungan total biaya, hingga struk belanja 
+    (untuk perhitungan biasa tanpa diskon)
 Berkas "README.md"
 
     merupakan penjelasan singkat isi dari repository
@@ -50,9 +55,9 @@ Login member jika pengguna sudah memiliki kode membership. Buat member jika peng
 dengan memasukkan data diri. Transaksi tanpa member apabila pengguna tidak memiliki dan tidak ingin membuat 
 membership.
 
-Pengguna memasukkan produk yang akan dibeli beserta jumlahnya. 
+Pengguna memasukkan kode produk yang akan dibeli. Apabila pengguna ingin membeli produk yang sama lebih dari 1, maka pengguna memasukkan kode produk sejumlah produk yang dibeli.
 
-Program akan menampilkan keseluruhan produk, jumlah produk yang dibeli, dan total harga yang harus dibayarkan.
+Program akan menampilkan total harga yang harus dibayarkan.
 
 Pengguna diberi pilihan untuk membayar secara tunai atau non-tunai.
 
