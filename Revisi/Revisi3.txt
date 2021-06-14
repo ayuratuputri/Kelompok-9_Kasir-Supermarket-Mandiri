@@ -1,0 +1,2 @@
+1. ada baiknya sebelum input produk ditampilkan dulu kode dan nama produknya
+2. untuk bagian "menambahkan produk?" sebaiknya diperjelas lagi seperti: "Apakah anda akan menambah produk lagi?" biar pengguna tidak kebingungan
