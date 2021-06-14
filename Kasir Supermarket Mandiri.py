@@ -1,4 +1,5 @@
 from produk import Product
+from checkout2 import CheckoutRegister2
 from checkout import CheckoutRegister
 from time import gmtime, strftime
 import csv
@@ -36,9 +37,28 @@ def scan_another():
     if (scan_another == 'y' or scan_another == 'Y'):
         scan_product()
 
-def main():
+def diskon():
     scan_product()
     c1 = CheckoutRegister(current_date_time, wishlist)
+    total_payment = c1.calculate_payment_due()
+    total_diskon = total_payment * 0.9
+    print("Total :", total_diskon)
+    change = c1.pay_money(total_payment)
+    # print("Change:",change)
+    c1.print_receipt(change)
+    print("\nTerima kasih telah berbelanja!")
+
+    next = input("Keluar dari program? (Y/N)")
+    if (next == "n" or next == "N"):
+        wishlist[:] = []
+        main()
+    else:
+        sys.exit(0)
+        exit()
+
+def main():
+    scan_product()
+    c1 = CheckoutRegister2(current_date_time, wishlist)
     total_payment = c1.calculate_payment_due()
     change = c1.pay_money(total_payment)
     # print("Change:",change)
@@ -53,7 +73,6 @@ def main():
         sys.exit(0)
         exit()
 
-        
 
 print("\n======== Selamat Datang di Kasir Supermarket Mandiri ========\n")
 print("1. Login member")
@@ -70,6 +89,10 @@ if option == 1 :
             break
         else :
             print("Kode yang anda masukkan salah")
+            # kode_member = input("Masukkan kode member anda: ")
+    print("\nPENGINPUTAN PRODUK")
+
+    diskon()
 
 elif option == 2 :
     print("Masukkan data diri anda")
@@ -93,14 +116,16 @@ elif option == 2 :
         file_bio = open("datamembership.csv", "a")
         file_bio.write(data_baru)
         file_bio.close()
+    print("\nPENGINPUTAN PRODUK")
+
+    diskon()
 
 elif option == 3 :
     print("Silahkan masukkan kode dan jumlah barang")
 
 else :
     print("Pilihan yang ada inputkan salah.")
-
+    
 print("\nPENGINPUTAN PRODUK")
 
 main()
-
