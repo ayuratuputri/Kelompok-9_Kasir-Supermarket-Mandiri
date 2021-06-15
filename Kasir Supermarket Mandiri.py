@@ -33,7 +33,7 @@ def scan_product():
         scan_another()
 
 def scan_another():
-    scan_another = input("Menambahkan produk? (Y/N)")
+    scan_another = input("Apakah anda ingin menambahkan produk lagi? (Y/N)")
     if (scan_another == 'y' or scan_another == 'Y'):
         scan_product()
 
