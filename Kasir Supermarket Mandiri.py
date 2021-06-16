@@ -3,11 +3,10 @@ from checkout2 import CheckoutRegister2
 from checkout import CheckoutRegister
 from time import gmtime, strftime
 import csv
-# import sys
 import os
 import sys
 
-current_date_time = strftime("%Y-%m-%d %H:%M:%S", gmtime())
+current_date_time = strftime("%Y-%m-%d %H:%M:%S", gmtime()) #memberi keterangan waktu pada struk
 wishlist = []
 
 datamember = []
@@ -15,25 +14,23 @@ with open('datamembership.csv') as csv_file:
     csv_reader = csv.DictReader(csv_file)
     for row in csv_reader:
         datamember.append(row)
-# print(datamember)
 list_kode = []
 for data in datamember :
-    list_kode.append(list(data.values())[0])
-# print(kodemember)
+    list_kode.append(list(data.values())[0]) #menambahkan data member
 
 def scan_product():
     barcode = input("\nMasukkan kode produk: ")
     p1 = Product("", "", barcode)
-    search_product = p1.check_product_on_inventory()
+    search_product = p1.check_product_on_inventory() #check ketersediaan produk
     if (search_product == False):
         print("Kode yang anda masukkan salah.\n")
-        scan_another()
+        scan_another() #memasukkan kode produk lagi
     else:
-        wishlist.append(search_product)
+        wishlist.append(search_product) #menambah produk
         scan_another()
 
 def scan_another():
-    scan_another = input("Apakah anda ingin menambahkan produk lagi? (Y/N)")
+    scan_another = input("Apakah anda ingin menambahkan produk lagi? (Y/N)") #menambahkan produk
     if (scan_another == 'y' or scan_another == 'Y'):
         scan_product()
 
@@ -41,12 +38,13 @@ def diskon():
     scan_product()
     c1 = CheckoutRegister(current_date_time, wishlist)
     total_payment = c1.calculate_payment_due()
-    total_diskon = total_payment * 0.9
+    total_diskon = total_payment * 0.9 #menghitung diskon
     print("Total :", total_diskon)
+
     change = c1.pay_money(total_payment)
-    # print("Change:",change)
     c1.print_receipt(change)
     print("\nTerima kasih telah berbelanja!")
+    print(current_date_time)
 
     next = input("Keluar dari program? (Y/N)")
     if (next == "n" or next == "N"):
@@ -60,10 +58,11 @@ def main():
     scan_product()
     c1 = CheckoutRegister2(current_date_time, wishlist)
     total_payment = c1.calculate_payment_due()
+
     change = c1.pay_money(total_payment)
-    # print("Change:",change)
     c1.print_receipt(change)
     print("\nTerima kasih telah berbelanja!")
+    print(current_date_time)
 
     next = input("Keluar dari program? (Y/N)")
     if (next == "n" or next == "N"):
@@ -89,7 +88,28 @@ if option == 1 :
             break
         else :
             print("Kode yang anda masukkan salah")
-            # kode_member = input("Masukkan kode member anda: ")
+            print("Kode dan nama produk")
+            print("101 : Apel 1 kg")
+            print("102 : Anggur 1 kg")
+            print("103 : Stroberi 1 kg")
+            print("104 : Mangga 1 kg")
+            print("105 : Lemon 1 kg")
+            print("106 : Alpukat 1 kg")
+            print("107 : Melon 1 kg")
+            print("201 : Susu 1 liter")
+            print("202 : Beras 5 kg")
+            print("203 : Mie instan (10 pcs)")
+            print("204 : Minyak goreng 2 liter")
+            print("205 : Saus sambal")
+            print("206 : Paket bumbu")
+            print("207 : Telur 1 kg")
+            print("208 : Gula 1 kg")
+            print("301 : Sabun mandi")
+            print("302 : Sampo")
+            print("303 : Deterjen")
+            print("304 : Sabun cuci piring")
+            print("305 : Pasta gigi")
+            print("306 : Body mist ")
     print("\nPENGINPUTAN PRODUK")
 
     diskon()
@@ -116,16 +136,58 @@ elif option == 2 :
         file_bio = open("datamembership.csv", "a")
         file_bio.write(data_baru)
         file_bio.close()
+        print("Kode dan nama produk")
+        print("101 : Apel 1 kg")
+        print("102 : Anggur 1 kg")
+        print("103 : Stroberi 1 kg")
+        print("104 : Mangga 1 kg")
+        print("105 : Lemon 1 kg")
+        print("106 : Alpukat 1 kg")
+        print("107 : Melon 1 kg")
+        print("201 : Susu 1 liter")
+        print("202 : Beras 5 kg")
+        print("203 : Mie instan (10 pcs)")
+        print("204 : Minyak goreng 2 liter")
+        print("205 : Saus sambal")
+        print("206 : Paket bumbu")
+        print("207 : Telur 1 kg")
+        print("208 : Gula 1 kg")
+        print("301 : Sabun mandi")
+        print("302 : Sampo")
+        print("303 : Deterjen")
+        print("304 : Sabun cuci piring")
+        print("305 : Pasta gigi")
+        print("306 : Body mist ")
     print("\nPENGINPUTAN PRODUK")
 
     diskon()
 
 elif option == 3 :
     print("Silahkan masukkan kode dan jumlah barang")
+    print("Kode dan nama produk")
+    print("101 : Apel 1 kg")
+    print("102 : Anggur 1 kg")
+    print("103 : Stroberi 1 kg")
+    print("104 : Mangga 1 kg")
+    print("105 : Lemon 1 kg")
+    print("106 : Alpukat 1 kg")
+    print("107 : Melon 1 kg")
+    print("201 : Susu 1 liter")
+    print("202 : Beras 5 kg")
+    print("203 : Mie instan (10 pcs)")
+    print("204 : Minyak goreng 2 liter")
+    print("205 : Saus sambal")
+    print("206 : Paket bumbu")
+    print("207 : Telur 1 kg")
+    print("208 : Gula 1 kg")
+    print("301 : Sabun mandi")
+    print("302 : Sampo")
+    print("303 : Deterjen")
+    print("304 : Sabun cuci piring")
+    print("305 : Pasta gigi")
+    print("306 : Body mist ")
+    print("\nPENGINPUTAN PRODUK")
+    main()
 
 else :
-    print("Pilihan yang ada inputkan salah.")
-    
-print("\nPENGINPUTAN PRODUK")
-
-main()
+    print("Pilihan yang anda inputkan salah.")
