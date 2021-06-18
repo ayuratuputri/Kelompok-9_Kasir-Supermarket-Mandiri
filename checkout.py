@@ -21,7 +21,7 @@ class CheckoutRegister():
 
     def pay_money(self, total):
         amount_to_pay = total * 0.9 #menampilkan total harga produk dengan diskon
-        print("\nTotal : Rp " + str(amount_to_pay))
+        print("\nTotal setelah diskon: Rp " + str(amount_to_pay))
         change = self.accept_payment(amount_to_pay)
         return change
 
