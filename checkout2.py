@@ -22,13 +22,10 @@ class CheckoutRegister2():
     def pay_money(self, total):
         amount_to_pay = total
         print("\nTotal : Rp " + str(amount_to_pay))
-        # self.accept_payment(amount_to_pay)
-        # amount_to_pay = input("Please enter an amount to pay: ")
         change = self.accept_payment(amount_to_pay)
         return change
 
     def accept_payment(self, amount_to_pay):
-        # print("accept payment")
         paid = int(0)
         customer_pay = int(0)
         due = int(0)
@@ -58,12 +55,9 @@ class CheckoutRegister2():
                         else:
                             change = paid - total
                             self.change = change
-                            # print("Change: ",change)
                             return change
                         break
                     break
-                    # due = False
-                    # self.print_receipt(change)
 
                 except ValueError:
                     print('Mohon masukkan angka yang benar.')
@@ -87,13 +81,14 @@ class CheckoutRegister2():
                     else:
                         change = paid - total
                         self.change = change
-                        # print("Change: ",change)
                         return change
                     break
         return change
 
     def print_receipt(self, change):
-        print("\n--------- Struk Belanja ---------\n")
+        print("-----------------------------")
+        print("\n----- Struk Belanja -----\n")
+        print("-----------------------------")
 
         for index, item in enumerate(self.checkout_items):
             print(item['nama'],'\t\tRp     ' + str(item['harga']))
