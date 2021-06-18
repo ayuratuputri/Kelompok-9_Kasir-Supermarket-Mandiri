@@ -29,21 +29,9 @@ class Product():
         self.harga = harga
         self.kode = kode
 
-
-    def display_product(self):
-        print(self)
-        # print 'Human readable: ', str(self)
-        # print repr(self)
-
-
-    def display_product_list(self):
-        print("Inventory")
-
-
     def check_product_on_inventory(self):
         found = False
         for index, product in enumerate(self.product_list):
-            # print(product)
 
             if self.kode == product['kode']:
                 product_found = {'nama': product['nama'], 'harga': product['harga'], 'kode': product['kode']}
@@ -54,11 +42,3 @@ class Product():
             return product_found
         else:
             return False
-
-
-    def set_kode(self, kode):
-        self.kode = kode
-
-
-    def set_harga(self, harga):
-        self.harga = harga
