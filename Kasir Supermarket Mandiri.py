@@ -1,7 +1,7 @@
-from produk import Product
-from checkout2 import CheckoutRegister2
-from checkout import CheckoutRegister
-from time import gmtime, strftime
+from produk import Product #mengimpor list product dari file produk.py
+from checkout2 import CheckoutRegister2 #mengimpor metode pembayaran tanpa diskon dari file checkout2.py
+from checkout import CheckoutRegister #mengimpor metode pembayaran dengan diskon dari file checkout.py
+from time import gmtime, strftime 
 import csv
 import sys
 
