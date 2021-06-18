@@ -1,4 +1,4 @@
-class Product():
+class Product(): # List produk yang dijual beserta harga dan kode
     product_list = [
         {   'nama': 'Apel 1 kg',    'harga': 21000, 'kode': '101'   },
         {   'nama': 'Anggur 1 kg',  'harga': 30000, 'kode': '102'   },
@@ -24,12 +24,12 @@ class Product():
     ]
 
 
-    def __init__(self, nama, harga, kode):
+    def __init__(self, nama, harga, kode): # menginisiasi data
         self.nama = nama
         self.harga = harga
         self.kode = kode
 
-    def check_product_on_inventory(self):
+    def check_product_on_inventory(self): # check data di list penjualan
         found = False
         for index, product in enumerate(self.product_list):
 
