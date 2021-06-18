@@ -14,18 +14,18 @@ with open('datamembership.csv') as csv_file: #digunakan untuk import file dari c
     for row in csv_reader:
         datamember.append(row)
 list_kode = []
-for data in datamember : #menambahkan data member
+for data in datamember : #membuat list berisi kode member
     list_kode.append(list(data.values())[0])
 
 def scan_product():
-    barcode = input("\nMasukkan kode produk: ") #memasukkan kode produk lagi
+    barcode = input("\nMasukkan kode produk: ") #memasukkan kode produk
     p1 = Product("", "", barcode)
     search_product = p1.check_product_on_inventory() #check ketersediaan produk
     if (search_product == False):
         print("Kode yang anda masukkan salah.\n")
         scan_another()
     else:
-        wishlist.append(search_product) #menambah produk
+        wishlist.append(search_product) #menambah produk pada list pembelian
         scan_another()
 
 def scan_another():
@@ -59,12 +59,12 @@ def main(): #menghitung total belanjaan tanpa diskon
     total_payment = c1.calculate_payment_due() #menghitung jumlah total belanjaan
 
     change = c1.pay_money(total_payment) #menghitung uang kembalian
-    c1.print_receipt(change)
+    c1.print_receipt(change) #mencetak struk belanja
     print("\nTerima kasih telah berbelanja!")
     print(current_date_time)
 
     next = input("Keluar dari program? (Y/N)")
-    if (next == "n" or next == "N"):
+    if (next == "n" or next == "N"): # kembali masuk ke program untuk membeli produk
         wishlist[:] = []
         main()
     else:
@@ -115,7 +115,7 @@ if option == 1 :
     diskon()
 
 elif option == 2 :
-    print("Masukkan data diri anda")
+    print("Masukkan data diri anda") #memasukkan data diri
     nama = str(input("Masukkan nama anda: "))
     no_ktp = int(input("Masukkan nomor KTP anda: "))
     no_hp = str(input("Masukkan nomor telepon anda: "))
@@ -127,12 +127,12 @@ elif option == 2 :
     print("Alamat: ", alamat)
 
 
-    from random import randint
+    from random import randint #mengacak kode untuk member baru
     for i in range(1) :
         kode_baru = randint(1, 1000)
-        print("Kode member anda :", kode_baru)
+        print("Kode member anda :", kode_baru) #mencetak kode untuk member baru
 
-        data_baru = "\n{},{},{},{},{}".format(kode_baru,nama, no_ktp, no_hp, alamat)
+        data_baru = "\n{},{},{},{},{}".format(kode_baru,nama, no_ktp, no_hp, alamat) #memasukkan data ke database datamembership.csv
         file_bio = open("datamembership.csv", "a")
         file_bio.write(data_baru)
         file_bio.close()
