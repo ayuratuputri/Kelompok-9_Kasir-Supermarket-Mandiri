@@ -3,28 +3,27 @@ from checkout2 import CheckoutRegister2
 from checkout import CheckoutRegister
 from time import gmtime, strftime
 import csv
-import os
 import sys
 
 current_date_time = strftime("%Y-%m-%d %H:%M:%S", gmtime()) #memberi keterangan waktu pada struk
 wishlist = []
 
 datamember = []
-with open('datamembership.csv') as csv_file:
+with open('datamembership.csv') as csv_file: #digunakan untuk import file dari csv
     csv_reader = csv.DictReader(csv_file)
     for row in csv_reader:
         datamember.append(row)
 list_kode = []
-for data in datamember :
-    list_kode.append(list(data.values())[0]) #menambahkan data member
+for data in datamember : #menambahkan data member
+    list_kode.append(list(data.values())[0])
 
 def scan_product():
-    barcode = input("\nMasukkan kode produk: ")
+    barcode = input("\nMasukkan kode produk: ") #memasukkan kode produk lagi
     p1 = Product("", "", barcode)
     search_product = p1.check_product_on_inventory() #check ketersediaan produk
     if (search_product == False):
         print("Kode yang anda masukkan salah.\n")
-        scan_another() #memasukkan kode produk lagi
+        scan_another()
     else:
         wishlist.append(search_product) #menambah produk
         scan_another()
@@ -34,14 +33,14 @@ def scan_another():
     if (scan_another == 'y' or scan_another == 'Y'):
         scan_product()
 
-def diskon():
+def diskon(): #menghitung total belanjaan dengan diskon
     scan_product()
     c1 = CheckoutRegister(current_date_time, wishlist)
-    total_payment = c1.calculate_payment_due()
-    total_diskon = total_payment * 0.9 #menghitung diskon
+    total_payment = c1.calculate_payment_due() #menghitung jumlah total biaya
+    total_diskon = total_payment
     print("Total :", total_diskon)
 
-    change = c1.pay_money(total_payment)
+    change = c1.pay_money(total_payment) #menghitung total kembalian
     c1.print_receipt(change)
     print("\nTerima kasih telah berbelanja!")
     print(current_date_time)
@@ -54,12 +53,12 @@ def diskon():
         sys.exit(0)
         exit()
 
-def main():
+def main(): #menghitung total belanjaan tanpa diskon
     scan_product()
     c1 = CheckoutRegister2(current_date_time, wishlist)
-    total_payment = c1.calculate_payment_due()
+    total_payment = c1.calculate_payment_due() #menghitung jumlah total belanjaan
 
-    change = c1.pay_money(total_payment)
+    change = c1.pay_money(total_payment) #menghitung uang kembalian
     c1.print_receipt(change)
     print("\nTerima kasih telah berbelanja!")
     print(current_date_time)
@@ -85,9 +84,6 @@ if option == 1 :
         kode_member = input("Masukkan kode member anda: ")
         if kode_member in list_kode :
             print("Anda merupakan member supermarket dengan kode", kode_member)
-            break
-        else :
-            print("Kode yang anda masukkan salah")
             print("Kode dan nama produk")
             print("101 : Apel 1 kg")
             print("102 : Anggur 1 kg")
@@ -110,6 +106,10 @@ if option == 1 :
             print("304 : Sabun cuci piring")
             print("305 : Pasta gigi")
             print("306 : Body mist ")
+            break
+        else :
+            print("Kode yang anda masukkan salah")
+
     print("\nPENGINPUTAN PRODUK")
 
     diskon()
